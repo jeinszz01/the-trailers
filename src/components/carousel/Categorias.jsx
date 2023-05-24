@@ -11,7 +11,7 @@ const Categorias = ({videosFilter, categoria}) => {
         {videosFilter.length > 0 && 
             <>
             <DivCardsCategoria>
-                    <h2>Categoria {categoria.name}</h2>
+                    <DivCardsImg><ImgCategoria src={categoria.linkLogo} alt={categoria.name} /><h2> Categoria {categoria.name}</h2></DivCardsImg>
                     <Swiper
                         //slidesPerView={2}
                         spaceBetween={30}
@@ -57,11 +57,12 @@ export default Categorias
 const DivCardsCategoria = styled('div')`
     margin-top: 2rem;
 `
-const DivCardscontent = styled('div')`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+const DivCardsImg = styled('div')`
+    display: flex;
+    align-items: center;
+    gap: .5em;
 `
-const DivPagination = styled('div')`
-    margin-bottom: 3rem;
-    position: absolute;
+const ImgCategoria = styled('img')`
+    width: 25px;
+    height: 25px;
 `
