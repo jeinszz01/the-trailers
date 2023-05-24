@@ -39,7 +39,6 @@ const Home = () => {
             </SectionBanner>
             <Carousel videos={videos} setVideos={setVideos} />
         </>
-        
     )
 }
 
@@ -84,18 +83,19 @@ const DivBannerCard = styled.div`
     display: flex;
     margin-top: 1rem;
     gap: 0 1rem;
+    flex-wrap: wrap;
 `
 const ImgCard = styled.img`
     width: 100%;
     max-width: 380px;
     height: 100%;
-    max-height: 225px;
+    max-height: 213px;
     border-radius: 1rem;
 `
 const DivFecha = styled.div`
     width: 100%;
     max-width: 380px;
-    max-height: 225px;
+    height: 213px;
     backdrop-filter: blur(10px);
     border-radius: 1rem;
     position: relative;

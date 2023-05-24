@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Categorias from './Categorias'
+import Media from './Skeleton/Media'
 
 const Carousel = ({videos, setVideos}) => {
     
     const [categorias, setcategorias] = useState([])
+    const [cargando, setCargando] = useState(true)
 
     useEffect(() => {
         const ConsultaApi = async() => {
+            setCargando(true)
             try {
                 const url = 'https://trailers-json.onrender.com/videos'
                 const url2 = 'https://trailers-json.onrender.com/categorias'
@@ -19,6 +22,7 @@ const Carousel = ({videos, setVideos}) => {
             } catch (error) {
                 console.log(error)
             }
+            setCargando(false)
         }
         ConsultaApi()
     }, [])
@@ -27,15 +31,19 @@ const Carousel = ({videos, setVideos}) => {
     return (
         <SectionCarousel>
             <DivCarousel>
-                {categorias.map(categoria => {
-                        const videosFilter = videos.filter((video) => video.categoria === categoria.name)
-                        return <Categorias
-                            key={categoria.id}
-                            categoria={categoria}
-                            videosFilter={videosFilter}
-                        />
-                    })
-                }
+                {cargando ? <Media /> : (
+                    <DivCategorias>
+                        {categorias.map(categoria => {
+                                const videosFilter = videos.filter((video) => video.categoria === categoria.name)
+                                return <Categorias
+                                    key={categoria.id}
+                                    categoria={categoria}
+                                    videosFilter={videosFilter}
+                                />
+                            })
+                        }
+                    </DivCategorias> 
+                )}
             </DivCarousel>
         </SectionCarousel>
     )
@@ -51,6 +59,8 @@ const SectionCarousel = styled.section`
 const DivCarousel = styled.div`
     max-width: 1440px;
     margin: 0 auto;
+`
+const DivCategorias = styled.div`
     margin-bottom: 2rem;
     h2 {
         text-transform: uppercase;

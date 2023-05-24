@@ -1,6 +1,8 @@
 # The trailers
 ![imagen-demo](./public/the-trailers.jpg)
 ---
+## Importante:
+La primera carga puede tardar algunos segundos.
 ## Pruebas:
 Si desea realizar algun cambio, pruebe agregando un nuevo video o categoria
 y realice el CRUD que desee con el mismo id.
