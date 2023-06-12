@@ -7,14 +7,13 @@ const Home = () => {
     const [videos, setVideos] = useState([])
 
     const random = Math.floor(Math.random()*10)
-    
     let bg = videos[random]?.imagenBg
 
     return (
         <>
             <SectionBanner bg={bg}>
                 <DivBanner>
-
+                    {videos.length <= 0 && <ParrafoCarga>La primera carga puede tardar unos segundos, debido a que nuestro Json esta alojado de manera gratuita.&#127939;</ParrafoCarga> }
                     <H2titleMovie>{videos[random]?.titulo}</H2titleMovie>
                     <div>
                         <LinkCategory href="#">{videos[random]?.categoria}</LinkCategory>
@@ -125,4 +124,9 @@ const H3Description = styled.h3`
     font-size: 24px;
     margin-top: 1rem;
     z-index: 0;
+`
+const ParrafoCarga = styled.p`
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
 `
